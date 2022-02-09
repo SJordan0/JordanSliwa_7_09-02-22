@@ -1,0 +1,21 @@
+{
+  "name": "les_petits_plats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:./css/style.css --style expanded",
+    "prefix": "postcss ./css/style.css --use autoprefixer -d ./css/prefixed/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SJordan0/JordanSliwa_7_09-02-22.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "browserslist": "last 4 versions",
+  "bugs": {
+    "url": "https://github.com/SJordan0/JordanSliwa_7_09-02-22/issues"
+  },
+  "homepage": "https://github.com/SJordan0/JordanSliwa_7_09-02-22#readme"
+}
