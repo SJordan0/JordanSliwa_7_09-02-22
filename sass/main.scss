@@ -25,7 +25,11 @@ $fontlatoregular: 'latoregular', serif;
 $fontlatobold: 'latobold', serif;
 $radius: 5px;
 
-body, h1, h2 {
+*:focus {
+    outline: none;
+}
+
+body {
     margin: 0;
     font-family: $fontlatoregular;
     font-size: 18px;
@@ -47,45 +51,69 @@ header{
     }
 }
 
-
 .search_bar{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
     background-color: #E7E7E7;
     width: 100%;
     height: 70px;
+    padding: 0 20px;
     margin-bottom: 25px;
     border-radius: $radius;
+    & input{
+        border: none;
+        background-color: #E7E7E7;
+        font-size: 18px;
+        width: 90%;
+    }
+    & i{
+        font-size: 32px;
+    }
+}
+
+.filters{
+    display: flex;
+    gap: 1rem;
 }
 
 .liste{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 45%;
-    color: white;
-    &_ingredients{
-        @extend %flex-liste;
-        background-color: #3282F7;
+    align-items: flex-start;
+    position: relative;
+    & input {
         border-radius: $radius;
-        width: 100%;
-        padding: 20px 18px;
-        margin-right: 20px
+        border: none;
+        padding: 27px 20px;
+        width: 130px;
+        transition: width 0.4s ease-in-out;
+        &:focus{
+            width: 620px;
+        }
     }
-    &_appareils{
-        @extend %flex-liste;
-        background-color: #68D9A4;
-        border-radius: $radius;
-        width: 100%;
-        padding: 20px 18px;
-        margin-right: 20px
+    & label {
+        color: white;
+        position: absolute;
+        padding: 1.2rem;
+        pointer-events: none;
     }
-    &_ustensiles{
-        @extend %flex-liste;
-        background-color: #ED6454;
-        border-radius: $radius;
-        width: 100%;
-        padding: 20px 18px;
+    & i {
+        color: white;
+        position: absolute;
+        padding: 1.45rem 0.9rem;
+        left: 125px;
+        pointer-events: none;
     }
 }
 
+.ingredients{
+    background-color: #3282F7;
+}
+
+.appareils{
+    background-color: #68D9A4;
+}
+
+.ustensiles{
+    background-color: #ED6454;
+}
