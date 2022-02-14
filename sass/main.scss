@@ -119,12 +119,21 @@ header{
 }
 
 .recipes_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 100px;
     & article {
         display: flex;
+        flex-direction: column;
+        width: 31%;
+        height: 364px;
+        margin-bottom: 20px;
+        margin-right: 2%;
+        & img{
+            width: 100%;
+            height: 178px;
+            background-color: #C7BEBE;
+        }
     }
 }
 
@@ -134,9 +143,25 @@ header{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-
+    background-color: #E7E7E7;
+    height: 186px;
+    & h2{
+        width: 75%;
+    }
     & ul{
         display: flex;
         flex-direction: column;
+        font-size: 12px;
+        width: 47%;
+        padding: 0 0 0 10px;
+    }
+    & p{
+        font-size: 12px;
+        width: 47%;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        padding-right: 10px;
     }
 }
