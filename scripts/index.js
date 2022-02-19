@@ -3,13 +3,11 @@ import { createAcard } from './modules/recipeCard.js'
 
 myFetch()
 
-//__Récupération et affichage des données des photographes___//
+//__Récupération et affichage des données des recettes___//
 function getRecipes(json) {
     const recipes = json.recipes
     showRecipes(recipes)
 }
-
-export { getRecipes }
 
 //___Affichage des données___//
 function showRecipes(recipes) {
@@ -17,3 +15,5 @@ function showRecipes(recipes) {
       createAcard(recipes[i]) 
     }
 }
+
+export { getRecipes }
