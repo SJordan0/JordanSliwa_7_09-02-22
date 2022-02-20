@@ -67,6 +67,7 @@ header img {
   display: flex;
   align-items: flex-start;
   position: relative;
+  flex-direction: column;
 }
 .liste input {
   border-radius: 5px;
@@ -154,6 +155,24 @@ header img {
 }
 .info li {
   font-size: 11px;
+}
+
+.listContainer {
+  display: none;
+  width: 100%;
+  height: 200px;
+}
+.listContainer_1 {
+  display: flex;
+  background-color: #3282F7;
+}
+.listContainer_2 {
+  display: flex;
+  background-color: #68D9A4;
+}
+.listContainer_3 {
+  display: flex;
+  background-color: #ED6454;
 }
 
 /*# sourceMappingURL=style.css.map */

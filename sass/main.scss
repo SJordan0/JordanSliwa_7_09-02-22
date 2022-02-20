@@ -82,6 +82,7 @@ header{
     display: flex;
     align-items: flex-start;
     position: relative;
+    flex-direction: column;
     & input {
         border-radius: $radius;
         border: none;
@@ -170,4 +171,23 @@ header{
     & li{
         font-size: 11px;
     }
+}
+
+.listContainer{
+    display: none;
+    width: 100%;
+    height: 200px;
+    &_1{
+        display: flex;
+        background-color:#3282F7;
+    }
+    &_2{
+        display: flex;
+        background-color:#68D9A4;
+    }
+    &_3{
+        display: flex;
+        background-color:#ED6454;
+    }
+
 }
