@@ -29,11 +29,13 @@ $radius: 5px;
     outline: none;
 }
 
-body, h1, h2, h3, p, ul, li {
+body, h1, h2, h3, p, ul, li, button {
     margin: 0;
     font-family: $fontlatoregular;
     font-size: 18px;
     list-style: none;
+    background: none;
+    border: none;
 }
 
 .container{
@@ -54,12 +56,11 @@ header{
 
 .search_bar{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: #E7E7E7;
     width: 100%;
     height: 70px;
-    padding: 0 20px;
     margin-bottom: 25px;
     border-radius: $radius;
     & input{
@@ -90,7 +91,7 @@ header{
         width: 130px;
         transition: width 0.4s ease-in-out;
         &:focus{
-            width: 620px;
+            width: 627px;
         }
     }
     & label {
@@ -105,6 +106,19 @@ header{
         padding: 1.45rem 0.9rem;
         left: 125px;
         pointer-events: none;
+    }
+
+    & button {
+        position: absolute;
+        left: 620px;
+        top: 20px;
+        width: 30px;
+        height: 30px;
+        
+        & i{
+            position: initial;
+            padding: 0;
+        }
     }
 }
 
@@ -129,8 +143,7 @@ header{
         flex-direction: column;
         width: 31%;
         height: 364px;
-        margin-bottom: 20px;
-        margin-right: 2%;
+        margin: 1%;
         & img{
             width: 100%;
             height: 178px;
@@ -175,8 +188,9 @@ header{
 
 .listContainer{
     display: none;
-    width: 100%;
-    height: 200px;
+    max-width: 667px;
+    height: 330px;
+    overflow: scroll;
     &_1{
         display: flex;
         background-color:#3282F7;
@@ -189,5 +203,9 @@ header{
         display: flex;
         background-color:#ED6454;
     }
-
+    & ul{
+        color: white;
+        display: flex;
+        flex-wrap: wrap;
+    }
 }

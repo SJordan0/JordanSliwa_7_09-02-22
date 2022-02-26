@@ -1,6 +1,9 @@
-import { openList1, closeList1, openList2, closeList2, openList3, closeList3, closeList } from "./ingredients.js";
+import { openList1, closeList1, openList2, closeList2, openList3, closeList3, closeList } from "./list.js";
 
 let recipesSection = document.querySelector(".recipes_section");
+let listIngredients = document.getElementById("listIngredients");
+let listAppareils = document.getElementById("listAppareils");
+let listUstensiles = document.getElementById("listUstensiles");
 let recipe
 
 
@@ -30,17 +33,20 @@ function getRecipeData(recipes) {
             recipes[i].ustensils,
         )
         displayRecipe(recipes[i])
+        displayIngredients(recipes[i])
+        displayAppareils(recipes[i])
+        displayUstensiles(recipes[i])
     }
 }
 
 function displayRecipe() {
-    let article = document.createElement( 'article' );
-    let img = document.createElement( 'img' );
-    let Infos = document.createElement ( 'div' );
-    let Name = document.createElement( 'h2' );
-    let Ingredients = document.createElement( 'ul' );
-    let Time = document.createElement( 'span' );
-    let Description = document.createElement( 'p' );
+    let article = document.createElement('article');
+    let img = document.createElement('img');
+    let Infos = document.createElement ('div');
+    let Name = document.createElement('h2');
+    let Ingredients = document.createElement('ul');
+    let Time = document.createElement('span');
+    let Description = document.createElement('p');
 
     let Ingredient = recipe.ingredients;
     for (let ingredient of Ingredient) {
@@ -59,7 +65,7 @@ function displayRecipe() {
     Name.innerHTML = `${recipe.name}`
     Time.innerHTML = `<i class="fa-regular fa-clock"></i> ${recipe.time} min`
     Description.innerHTML = `${recipe.description}`
-    article.setAttribute('id', `article${recipe.id}`)
+    article.setAttribute('class', `article ${recipe.id}`)
 
     article.appendChild(img)
     Infos.appendChild(Name)
@@ -70,12 +76,33 @@ function displayRecipe() {
     recipesSection.appendChild(article)
 }
 
+function displayIngredients () {
+  let Ingredient = recipe.ingredients;
+  for (let ingredient of Ingredient) {
+    let listItem = document.createElement('li');
+    listItem.innerHTML = `${ingredient.ingredient}`
+    listIngredients.appendChild(listItem)
+  }
+}
+
+function displayAppareils(){
+  let listItem = document.createElement('li');
+  listItem.innerHTML = `${recipe.appliance}`
+  listAppareils.appendChild(listItem)
+}
+
+function displayUstensiles(){
+  let listItem = document.createElement('li');
+  listItem.innerHTML = `${recipe.ustensils}`
+  listUstensiles.appendChild(listItem)
+}
+
 let open1 = document.querySelector('.ingredients')
-let close1 = document.querySelector('.search_bar')
+let close1 = document.querySelector('#iconClose1')
 let open2 = document.querySelector('.appareils')
-let close2 = document.querySelector('.search_bar')
+let close2 = document.querySelector('#iconClose2')
 let open3 = document.querySelector('.ustensiles')
-let close3 = document.querySelector('.search_bar')
+let close3 = document.querySelector('#iconClose3')
 let closeAll = document.querySelector('.filters')
 
 open1.addEventListener('click', () => openList1())

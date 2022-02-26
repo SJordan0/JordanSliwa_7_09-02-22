@@ -19,38 +19,44 @@
         <main>
             <div class="container">
                 <div class="search_bar">
-                    <input type="text" placeholder="Rechercher une recette">
+                    <input type="text" id="searchBar" placeholder="Rechercher une recette">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
 
                 <div class="filters">
                     <div class="liste">
-                        <input type="text" class="ingredients" id="listIngredients">
-                        <label>Ingrédients</label>
-                        <i class="fas fa-chevron-down"></i>
-                        <!-- <i class="fas fa-chevron-up"></i> -->
+                        <input type="text" class="ingredients" id="searchIngredients">
+                        <label id="label1">Ingrédients</label>
+                        <i id="iconOpen1" class="fas fa-chevron-down"></i>
+                        <button id="iconClose1">
+                            <i class="fas fa-chevron-up"></i>
+                        </button>
                         <div class="listContainer" id="listContainer1">
-                            <ul></ul>
+                            <ul id="listIngredients"></ul>
                         </div>
                     </div>
                     
                     <div class="liste">
-                        <input type="text" class="appareils">
-                        <label>Appareils</label>
-                        <i class="fas fa-chevron-down"></i>
-                        <!-- <i class="fas fa-chevron-up"></i> -->
+                        <input type="text" class="appareils" id="searchAppareils">
+                        <label id="label2">Appareils</label>
+                        <i id="iconOpen2" class="fas fa-chevron-down"></i>
+                        <button id="iconClose2">
+                            <i class="fas fa-chevron-up"></i>
+                        </button>
                         <div class="listContainer" id="listContainer2">
-                            <ul></ul>
+                            <ul id="listAppareils"></ul>
                         </div>
                     </div>
 
                     <div class="liste">
-                        <input type="text" class="ustensiles">
-                        <label>Ustensiles</label>
-                        <i class="fas fa-chevron-down"></i>
-                        <!-- <i class="fas fa-chevron-up"></i> -->
+                        <input type="text" class="ustensiles" id="searchUstensils">
+                        <label id="label3">Ustensiles</label>
+                        <i id="iconOpen3" class="fas fa-chevron-down"></i>
+                        <button id="iconClose3">
+                            <i class="fas fa-chevron-up"></i>
+                        </button>
                         <div class="listContainer" id="listContainer3">
-                            <ul></ul>
+                            <ul id="listUstensiles"></ul>
                         </div>
                     </div>
                 </div>
