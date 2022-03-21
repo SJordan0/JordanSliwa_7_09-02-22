@@ -3,9 +3,12 @@ import { openList1, closeList1, openList2, closeList2, openList3, closeList3, cl
 let recipesSection = document.querySelector(".recipes_section");
 let listIngredients = document.getElementById("listIngredients");
 let listAppareils = document.getElementById("listAppareils");
-let listUstensiles = document.getElementById("listUstensiles");
+let listUstensils = document.getElementById("listUstensils");
+let searchBar = document.getElementById("searchBar")
+let searchIngredients = document.getElementById('searchIngredients')
+let searchAppareils = document.getElementById('searchAppareils')
+let searchUstensils = document.getElementById('searchUstensils')
 let recipe
-
 
 class Recipe {
     constructor(name, id, servings, ingredients, time, description, appliance, ustensils) {
@@ -33,9 +36,9 @@ function getRecipeData(recipes) {
             recipes[i].ustensils,
         )
         displayRecipe(recipes[i])
-        displayIngredients(recipes[i])
-        displayAppareils(recipes[i])
-        displayUstensiles(recipes[i])
+        displayIngredients(recipes[i].ingredients)
+        displayAppareils(recipes[i].appliance)
+        displayUstensils(recipes[i].ustensils)
     }
 }
 
@@ -76,6 +79,29 @@ function displayRecipe() {
     recipesSection.appendChild(article)
 }
 
+function mySearchFunction() {
+  var input, filter, article, div, h2, ul, li, item, i, txtValue;
+  input = document.getElementById("searchBar");
+  filter = input.value.toUpperCase();
+  article = document.getElementsByTagName("article");
+  div = article.getElementsByClassName("info");
+  h2 = div.getElementsByTagName("h2");
+  ul = article.getElementsByTagName("ul");
+  li = ul.getElementsByTagName("li");
+
+  for (i = 0; i < article.length; i++) {
+    item = article[i];
+    txtValue = item.textContent || item.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      article[i].style.display = "";
+    } else {
+      article[i].style.display = "none";
+    }
+  }
+}
+
+searchBar.addEventListener('keyup', mySearchFunction)
+
 function displayIngredients () {
   let Ingredient = recipe.ingredients;
   for (let ingredient of Ingredient) {
@@ -85,17 +111,78 @@ function displayIngredients () {
   }
 }
 
+function mySearchFunctionIngredients() {
+  var input, filter, ul, li, item, i, txtValue;
+  input = document.getElementById("searchIngredients");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("listIngredients");
+  li = ul.getElementsByTagName("li");
+
+  for (i = 0; i < li.length; i++) {
+    item = li[i];
+    txtValue = item.textContent || item.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+searchIngredients.addEventListener('keyup', mySearchFunctionIngredients)
+
 function displayAppareils(){
   let listItem = document.createElement('li');
   listItem.innerHTML = `${recipe.appliance}`
   listAppareils.appendChild(listItem)
 }
 
-function displayUstensiles(){
+function mySearchFunctionAppareils() {
+  var input, filter, ul, li, item, i, txtValue;
+  input = document.getElementById("searchAppareils");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("listAppareils");
+  li = ul.getElementsByTagName("li");
+
+  for (i = 0; i < li.length; i++) {
+    item = li[i];
+    txtValue = item.textContent || item.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+searchAppareils.addEventListener('keyup', mySearchFunctionAppareils)
+
+function displayUstensils(){
   let listItem = document.createElement('li');
   listItem.innerHTML = `${recipe.ustensils}`
-  listUstensiles.appendChild(listItem)
+  listUstensils.appendChild(listItem)
 }
+
+function mySearchFunctionUstensils() {
+  var input, filter, ul, li, item, i, txtValue;
+  input = document.getElementById("searchUstensils");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("listUstensils");
+  li = ul.getElementsByTagName("li");
+
+  for (i = 0; i < li.length; i++) {
+    item = li[i];
+    txtValue = item.textContent || item.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+searchUstensils.addEventListener('keyup', mySearchFunctionUstensils)
+
 
 let open1 = document.querySelector('.ingredients')
 let close1 = document.querySelector('#iconClose1')
@@ -113,4 +200,8 @@ open3.addEventListener('click', () => openList3())
 close3.addEventListener('click', () => closeList3())
 closeAll.addEventListener('mouseup', () => closeList())
 
-export { getRecipeData }
+export { getRecipeData, displayAppareils }
+
+export const removeDuplicateItemInArray = (array) => array.filter((item, pos) => {
+  return array.indexOf(item) == pos;
+})
