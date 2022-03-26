@@ -188,7 +188,7 @@ header{
 
 .listContainer{
     display: none;
-    max-width: 667px;
+    width: 667px;
     height: 330px;
     overflow: scroll;
     &_1{
@@ -207,5 +207,18 @@ header{
         color: white;
         display: flex;
         flex-wrap: wrap;
+    }
+}
+
+.list {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 10px;
+    & li{
+        cursor: pointer;
+        &:hover{
+            background-color: black;
+        }
     }
 }

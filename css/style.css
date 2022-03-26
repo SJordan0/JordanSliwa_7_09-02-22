@@ -170,7 +170,7 @@ header img {
 
 .listContainer {
   display: none;
-  max-width: 667px;
+  width: 667px;
   height: 330px;
   overflow: scroll;
 }
@@ -190,6 +190,19 @@ header img {
   color: white;
   display: flex;
   flex-wrap: wrap;
+}
+
+.list {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  gap: 10px;
+}
+.list li {
+  cursor: pointer;
+}
+.list li:hover {
+  background-color: black;
 }
 
 /*# sourceMappingURL=style.css.map */

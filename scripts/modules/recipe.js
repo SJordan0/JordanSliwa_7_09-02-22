@@ -81,21 +81,38 @@ function displayRecipe() {
 
 function mySearchFunction() {
   var input, filter, article, div, h2, ul, li, item, i, txtValue;
+  var ulIng, liIng, ulApp, liApp, ulUst, liUst, itemIng, itemApp, itemUst;
   input = document.getElementById("searchBar");
   filter = input.value.toUpperCase();
   article = document.getElementsByTagName("article");
-  div = article.getElementsByClassName("info");
-  h2 = div.getElementsByTagName("h2");
-  ul = article.getElementsByTagName("ul");
-  li = ul.getElementsByTagName("li");
+  ulIng = document.getElementById("listIngredients");
+  liIng = ulIng.getElementsByTagName("li");
+  ulApp = document.getElementById("listAppareils");
+  liApp = ulApp.getElementsByTagName("li");
+  ulUst = document.getElementById("listUstensils");
+  liUst = ulUst.getElementsByTagName("li");
+
+  // div = article.getElementsByClassName("info");
+  // h2 = div.getElementsByTagName("h2");
+  // ul = article.getElementsByTagName("ul");
+  // li = ul.getElementsByTagName("li");
 
   for (i = 0; i < article.length; i++) {
     item = article[i];
+    itemIng = liIng[i];
+    itemApp = liApp[i];
+    itemUst = liUst[i];
     txtValue = item.textContent || item.innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       article[i].style.display = "";
+      liIng[i].style.display = "";
+      liApp[i].style.display = "";
+      liUst[i].style.display = "";
     } else {
       article[i].style.display = "none";
+      liIng[i].style.display = "none";
+      liApp[i].style.display = "none";
+      liUst[i].style.display = "none";
     }
   }
 }
