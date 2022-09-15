@@ -55,10 +55,13 @@
 //     }
 // }
 
+
+import { ingredients, appareils, ustensils } from "./recipe.js";
+
 function mySearchFunction() {
   var item, i, txtValue;
   let input = document.getElementById("searchBar");
-  let filter = input.value.toUpperCase();
+  let filter = input.value;
   let article = document.getElementsByTagName("article");
   let ulIng = document.getElementById("listIngredients");
   let liIng = ulIng.getElementsByTagName("li");
@@ -72,70 +75,72 @@ function mySearchFunction() {
     txtValue = item.textContent || item.innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       article[i].style.display = "";
-      liIng[i].style.display = "";
-      liApp[i].style.display = "";
-      liUst[i].style.display = "";
+      // mySearchFunctionIngredients();
+      // mySearchFunctionAppareils();
+      // mySearchFunctionUstensils();
     } else {
       article[i].style.display = "none";
-      liIng[i].style.display = "none";
-      liApp[i].style.display = "none";
-      liUst[i].style.display = "none";
+      // mySearchFunctionIngredients();
+      // mySearchFunctionAppareils();
+      // mySearchFunctionUstensils();
     }
   }
 }
 
-function mySearchFunctionIngredients() {
-  var input, filter, ul, li, item, i, txtValue;
-  input = document.getElementById("searchIngredients");
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("listIngredients");
-  li = ul.getElementsByTagName("li");
 
-  for (i = 0; i < li.length; i++) {
-    item = li[i];
-    txtValue = item.textContent || item.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
+function mySearchFunctionIngredients() {
+  let listIngredients = document.getElementById("listIngredients");
+  listIngredients.innerHTML='';
+  var input, filter;
+  // console.log(listIngredients)
+  input = document.getElementById("searchIngredients");
+  // console.log(valueText.target.value)
+  filter = input.value.toLowerCase();
+  // if (valueText) {
+  //   filter = valueText;
+  // } else {
+  //   filter = input.value.toLowerCase();
+  // }
+  var test = ingredients.map(ing => {
+    if (ing.search(filter) != -1){
+      let listItem = document.createElement('li');
+      listItem.innerHTML = ing;
+      listIngredients.appendChild(listItem)
     }
-  }
+  } )
 }
 
 function mySearchFunctionAppareils() {
-  var input, filter, ul, li, item, i, txtValue;
+  let listAppareils = document.getElementById("listAppareils");
+  listAppareils.innerHTML='';
+  var input, filter;
   input = document.getElementById("searchAppareils");
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("listAppareils");
-  li = ul.getElementsByTagName("li");
+  filter = input.value.toLowerCase();
 
-  for (i = 0; i < li.length; i++) {
-    item = li[i];
-    txtValue = item.textContent || item.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
+  var test = appareils.map(app => {
+    if (app.search(filter) != -1){
+      let listItem = document.createElement('li');
+      listItem.innerHTML = app;
+      listAppareils.appendChild(listItem)
     }
-  }
+  } )
 }
 
 function mySearchFunctionUstensils() {
-  var input, filter, ul, li, item, i, txtValue;
+  let listUstensils = document.getElementById("listUstensils");
+  listUstensils.innerHTML='';
+  var input, filter;
   input = document.getElementById("searchUstensils");
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("listUstensils");
-  li = ul.getElementsByTagName("li");
+  filter = input.value.toLowerCase();
 
-  for (i = 0; i < li.length; i++) {
-    item = li[i];
-    txtValue = item.textContent || item.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
+  var test = ustensils.map(ust => {
+    if (ust.search(filter) != -1){
+      let listItem = document.createElement('li');
+      listItem.innerHTML = ust;
+      listUstensils.appendChild(listItem)
     }
-  }
+  } )
 }
+
 
 export {mySearchFunction, mySearchFunctionIngredients, mySearchFunctionAppareils, mySearchFunctionUstensils}

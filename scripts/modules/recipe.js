@@ -9,7 +9,7 @@ let searchBar = document.getElementById("searchBar")
 let searchIngredients = document.getElementById('searchIngredients')
 let searchAppareils = document.getElementById('searchAppareils')
 let searchUstensils = document.getElementById('searchUstensils')
-let recipe, ingredient
+let recipe
 
 class Recipe {
     constructor(name, id, servings, ingredients, time, description, appliance, ustensils) {
@@ -40,7 +40,7 @@ function getRecipeData(recipes) {
         displayIngredients(recipes[i].ingredients)
         displayAppareils(recipes[i].appliance)
         displayUstensils(recipes[i].ustensils)
-        console.log(i)
+        // console.log(i)
 
     }
 }
@@ -105,7 +105,7 @@ function displayRecipe() {
       if(!ingredient.quantity && !ingredient.unit){
         listItem.innerHTML = `${ingredient.ingredient}`
       } else if (ingredient.quantity && !ingredient.unit){
-      listItem.innerHTML = `${ingredient.ingredient} : ${ingredient.quantity}`
+      listItem.innerHTML = ` ${ingredient.quantity} ${ingredient.ingredient} `
       } else {
         listItem.innerHTML = `${ingredient.ingredient} : ${ingredient.quantity} ${ingredient.unit}`
       }
@@ -127,43 +127,66 @@ function displayRecipe() {
     recipesSection.appendChild(article)
 }
 
+const ingredients = [];
+const appareils = [];
+const ustensils = [];
 
 function displayIngredients() {
-  // let Ing = recipe.ingredients;
-  //  for (let ingredient of Ing) {
-  //  let listItem = document.createElement('li');
-  //  listItem.innerHTML = `${ingredient.ingredient}`
-  //  listIngredients.appendChild(listItem)
-//  }
+
+  let Ing = recipe.ingredients;
 
 
-let recipeId = recipesSection.querySelector(`#article_${recipe.id}`);
-let info = recipeId.querySelector('.info');
-let ul = info.querySelector('ul')
-let li = ul.getElementsByTagName('li')
-for (let ingredient of li) {
-  let item = document.createElement('li');
-  item.innerHTML = ingredient.outerText;
-  listIngredients.appendChild(item);
+   for (let ingredient of Ing) {
+
+   if(ingredients.filter(ing => ing == ingredient.ingredient.toLowerCase()).length == 0) {
+    let listItem = document.createElement('li');
+    listItem.innerHTML = `${ingredient.ingredient}`
+    listIngredients.appendChild(listItem)
+   ingredients.push(ingredient.ingredient.toLowerCase())
+   }
+ }
+//  console.log(ingredients)
+
+
+// let recipeId = recipesSection.querySelector(`#article_${recipe.id}`);
+// let info = recipeId.querySelector('.info');
+// let ul = info.querySelector('ul')
+// let li = ul.getElementsByTagName('li')
+// for (let ingredient of li) {
+//   let item = document.createElement('li');
+//   item.innerHTML = ingredient.outerText;
+//   listIngredients.appendChild(item);
+// }
+// console.log(ul);
+// console.log(li);
+
 }
-console.log(ul);
-console.log(li);
 
-}
+
 
 function displayAppareils(){
-  let listItem = document.createElement('li');
-  listItem.innerHTML = `${recipe.appliance}`
-  listAppareils.appendChild(listItem)
+  let appareil = recipe.appliance;
+
+  if(appareils.filter(app => app == appareil.toLowerCase()).length == 0) {
+    let listItem = document.createElement('li');
+    listItem.innerHTML = `${appareil}`
+    listAppareils.appendChild(listItem)
+   appareils.push(appareil.toLowerCase())
+   }
 }
 
 function displayUstensils(){
-  let Ustensil = recipe.ustensils;
-  for (let ustensil of Ustensil) {
+  let Ust = recipe.ustensils;
+
+  for (let ustensil of Ust) {
+
+  if(ustensils.filter(ust => ust == ustensil.toLowerCase()).length == 0) {
     let listItem = document.createElement('li');
     listItem.innerHTML = `${ustensil}`
     listUstensils.appendChild(listItem)
+    ustensils.push(ustensil.toLowerCase())
   }
+}
 }
 
 
@@ -189,4 +212,4 @@ open3.addEventListener('click', () => openList3())
 close3.addEventListener('click', () => closeList3())
 closeAll.addEventListener('mouseup', () => closeList())
 
-export { getRecipeData, displayAppareils }
+export { getRecipeData, ingredients, appareils, ustensils }
