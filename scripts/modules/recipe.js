@@ -11,6 +11,11 @@ let searchAppareils = document.getElementById('searchAppareils')
 let searchUstensils = document.getElementById('searchUstensils')
 let recipe
 
+const recettes = []
+const ingredients = [];
+const appareils = [];
+const ustensils = [];
+
 class Recipe {
     constructor(name, id, servings, ingredients, time, description, appliance, ustensils) {
       this.name = name,
@@ -98,6 +103,8 @@ function displayRecipe() {
     let Ingredients = document.createElement('ul');
     let Time = document.createElement('span');
     let Description = document.createElement('p');
+    let Appareil = document.createElement('p');
+    let Ustensils = document.createElement('ul');
 
     let Ingredient = recipe.ingredients;
     for (let ingredient of Ingredient) {
@@ -105,31 +112,42 @@ function displayRecipe() {
       if(!ingredient.quantity && !ingredient.unit){
         listItem.innerHTML = `${ingredient.ingredient}`
       } else if (ingredient.quantity && !ingredient.unit){
-      listItem.innerHTML = ` ${ingredient.quantity} ${ingredient.ingredient} `
+      listItem.innerHTML = `${ingredient.ingredient}: ${ingredient.quantity}`
       } else {
-        listItem.innerHTML = `${ingredient.ingredient} : ${ingredient.quantity} ${ingredient.unit}`
+        listItem.innerHTML = `${ingredient.ingredient}: ${ingredient.quantity} ${ingredient.unit}`
       }
       Ingredients.appendChild(listItem);
     }
+    Ingredients.classList.add('recipe_ing')
+
+    let Ustensil = recipe.ustensils;
+    for(let ustensil of Ustensil) {
+      let listItem = document.createElement('li');
+      listItem.innerHTML = `${ustensil}`
+      Ustensils.appendChild(listItem);
+    }
+    Ustensils.classList.add('recipe_ust')
 
     Infos.classList.add('info')
     Name.innerHTML = `${recipe.name}`
+    Name.classList.add('title')
     Time.innerHTML = `<i class="fa-regular fa-clock"></i> ${recipe.time} min`
     Description.innerHTML = `${recipe.description}`
-    article.setAttribute('id', `article_${recipe.id}`)
+    Description.classList.add('description')
+    Appareil.innerHTML = `${recipe.appliance}`
+    Appareil.classList.add('recipe_app')
 
     article.appendChild(img)
     Infos.appendChild(Name)
     Infos.appendChild(Time)
     Infos.appendChild(Ingredients)
     Infos.appendChild(Description)
+    Infos.appendChild(Ustensils)
+    Infos.appendChild(Appareil)
     article.appendChild(Infos)
     recipesSection.appendChild(article)
+    recettes.push(article.innerHTML.toLowerCase())
 }
-
-const ingredients = [];
-const appareils = [];
-const ustensils = [];
 
 function displayIngredients() {
 
@@ -212,4 +230,4 @@ open3.addEventListener('click', () => openList3())
 close3.addEventListener('click', () => closeList3())
 closeAll.addEventListener('mouseup', () => closeList())
 
-export { getRecipeData, ingredients, appareils, ustensils }
+export { getRecipeData, recettes, ingredients, appareils, ustensils }

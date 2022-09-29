@@ -159,31 +159,47 @@ header{
     justify-content: space-around;
     background-color: #E7E7E7;
     height: 186px;
+    position: relative;
+    overflow: hidden;
     & h2{
         width: 65%;
     }
     & span {
         width: 22%;
     }
-    & ul{
-        display: flex;
-        flex-direction: column;
-        width: 45%;
-        padding-left: 10px;
-    }
-    & p{
-        font-size: 12px;
-        width: 45%;
-        display: -webkit-box;
-        overflow: hidden;
-        -webkit-line-clamp: 6;
-        -webkit-box-orient: vertical;
-        padding-right: 10px;
-    }
-
     & li{
         font-size: 11px;
     }
+}
+
+.description {
+    font-size: 12px;
+    width: 45%;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    padding-right: 10px;
+}
+
+.recipe_ing{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    padding-left: 10px;
+}
+
+.recipe_app{
+    display: none;
+}
+
+.recipe_ust{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    padding-left: 10px;
+    position: absolute;
+    left: -100px;
 }
 
 .listContainer{
