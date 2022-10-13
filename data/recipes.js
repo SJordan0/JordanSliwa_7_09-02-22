@@ -38,7 +38,7 @@ export const recipes = [
         "servings": 2,
         "ingredients": [
             {
-                "ingredient" : "Thon Rouge (ou blanc)",
+                "ingredient" : "Thon Rouge ou blanc",
                 "quantity" : 200,
                 "unit" : "grammes"
             },
@@ -359,7 +359,7 @@ export const recipes = [
         "time": 60,
         "description": "Commencer par cuire les pommes de terre dans l'eau bouillante. Puis epluchez les et coupez les en rondelles. Emincer les oignons puis les faire dorer dans du beurre. Ajouter le jambon fumé coupé en en morceaux ainsi que les pommes de terres. Salez, poivrez à votre gout ( et celui de vos convives ) Laissez cuisiner durant environ 10 minutes puis ajouter le vin blanc. Après 5 minutes, mettre le tout dans un plat à gratin. Coupez le rebelochon, soit en tranches, soit le couper en 2 dans le sens de l'épaisseur et recouvrir les pommes de terre. Cuire au four (environ 220°) durant 25 minutes. C'est prêt !",
         "appliance":"Four",
-        "ustensils": ["plat à gratin", "couteau","Économe"]
+        "ustensils": ["plat à gratin", "couteau","économe"]
     },{
         "id": 11,
         "name": "Salade tomate, mozzarella et pommes",

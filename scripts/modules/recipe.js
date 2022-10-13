@@ -1,5 +1,6 @@
 import { openList1, closeList1, openList2, closeList2, openList3, closeList3, closeList } from "./list.js";
 import { mySearchFunction, mySearchFunctionIngredients, mySearchFunctionAppareils, mySearchFunctionUstensils } from './search.js'
+import { CreateTag, RemoveTag } from '../modules/tags.js'
 
 let recipesSection = document.querySelector(".recipes_section");
 let listIngredients = document.getElementById("listIngredients");
@@ -45,55 +46,10 @@ function getRecipeData(recipes) {
         displayIngredients(recipes[i].ingredients)
         displayAppareils(recipes[i].appliance)
         displayUstensils(recipes[i].ustensils)
-        // console.log(i)
-
+        CreateTag();
+        RemoveTag();
     }
 }
-
-// class Ingredients {
-//   constructor(ingredients) {
-//     this.ingredients = ingredients
-//   }
-// }
-
-// function getRecipeIngredients(ingredients) {
-//   for (let j = 0; j < ingredients.length; j++) {
-//     ingredient = new Ingredients (
-//       ingredients[j].ingredient
-//     )
-//     displayIngredients(ingredients[j])
-//   }
-
-// }
-
-// var Ing = [];
-// var j = 0;
-// let item;
-// let Li = recipesSection.getElementsByTagName('li');
-
-// function displayIngredients(){
-//   while (j < Li.length) {
-//     item = Li[j];
-//     j++;
-//     Ing.push(item);
-//   }
-
-//   for (var k = 0; k < Ing.length; k++){
-//     let listItem = document.createElement('li');
-//     listItem.innerHTML = Ing[k].innerHTML;
-//     listIngredients.appendChild(listItem);
-//     console.log(Ing[k].innerHTML);
-//   }
-
-//   // let Ingredient = recipe.ingredients;
-//   // for (let ingredient of Ingredient) {
-//   //   let listItem = document.createElement('li');
-//   //   listItem.innerHTML = `${ingredient.ingredient}`
-//   //   listIngredients.appendChild(listItem)
-//   // }
-//   console.log(j);
-//   console.log(Ing);
-// }
 
 function displayRecipe() {
     let article = document.createElement('article');
@@ -145,6 +101,7 @@ function displayRecipe() {
     Infos.appendChild(Ustensils)
     Infos.appendChild(Appareil)
     article.appendChild(Infos)
+    article.classList.add('recette')
     recipesSection.appendChild(article)
     recettes.push(article.innerHTML.toLowerCase())
 }
@@ -162,25 +119,8 @@ function displayIngredients() {
     listIngredients.appendChild(listItem)
    ingredients.push(ingredient.ingredient.toLowerCase())
    }
+   }
  }
-//  console.log(ingredients)
-
-
-// let recipeId = recipesSection.querySelector(`#article_${recipe.id}`);
-// let info = recipeId.querySelector('.info');
-// let ul = info.querySelector('ul')
-// let li = ul.getElementsByTagName('li')
-// for (let ingredient of li) {
-//   let item = document.createElement('li');
-//   item.innerHTML = ingredient.outerText;
-//   listIngredients.appendChild(item);
-// }
-// console.log(ul);
-// console.log(li);
-
-}
-
-
 
 function displayAppareils(){
   let appareil = recipe.appliance;
