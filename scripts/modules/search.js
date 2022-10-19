@@ -1,4 +1,5 @@
 import { recettes, ingredients, appareils, ustensils } from "./recipe.js";
+import { CreateTag } from "./tags.js";
 
 function mySearchFunction(listTag) {
   let recipesSection = document.querySelector("#recipesSection")
@@ -27,22 +28,24 @@ function mySearchFunction(listTag) {
             let listIng = liste.innerText;
             const ingred = listIng.split('\n');
             ingred.map(ing => {
-              if(ingFiltered.filter(elt => elt == ing).length == 0) {
                 let test = ing.split(':');
-                ingFiltered.push(test[0])
-                console.log(ingFiltered)
-              }
+                if(ingFiltered.filter(elt => elt == test[0]).length == 0) {
+                  ingFiltered.push(test[0])
+                }
             })
             let appareil = e.querySelector('.recipe_app')
             const app = appareil.innerText;
+            if(appFiltered.filter(elt => elt == app).length == 0) {
             appFiltered.push(app)
+            }
             
             let listUst = e.querySelector('.recipe_ust')
             const ustensil = listUst.innerText;
-  
             const usten = ustensil.split('\n');
             usten.map(ust => {
-              ustFiltered.push(ust)
+              if(ustFiltered.filter(elt => elt == ust).length == 0) {
+                ustFiltered.push(ust)
+                }
             })
             recFiltered.push(e);
           }
@@ -61,34 +64,38 @@ function mySearchFunction(listTag) {
 
       let recipe = document.querySelector("#recipesSection")
       let info = recipe.querySelectorAll('.info').forEach(e => {
+        if(recFiltered.filter(elt => elt == e).length == 0) {
         let liste = e.querySelector('.recipe_ing')
         let listIng = liste.innerText;
         const ingred = listIng.split('\n');
         ingred.map(ing => {
-          if(ingFiltered.filter(elt => elt == ing).length == 0) {
-            let test = ing.split(':');
+          let test = ing.split(':');
+          if(ingFiltered.filter(elt => elt == test[0]).length == 0) {
             ingFiltered.push(test[0])
           }
-        })
-
-
+      })
 
       let appareil = e.querySelector('.recipe_app')
       const app = appareil.innerText;
-      appFiltered.push(app)
-      
+      if(appFiltered.filter(elt => elt == app).length == 0) {
+        appFiltered.push(app)
+        }
+
       let listUst = e.querySelector('.recipe_ust')
       const ustensil = listUst.innerText;
-
       const usten = ustensil.split('\n');
       usten.map(ust => {
+        if(ustFiltered.filter(elt => elt == ust).length == 0) {
         ustFiltered.push(ust)
+        }
       })
+      CreateTag();
+      recFiltered.push(e);
+    }
     })
     }
   } )
 }
-  
   mySearchFunctionIngredients(ingFiltered)
   mySearchFunctionAppareils(appFiltered)
   mySearchFunctionUstensils(ustFiltered)
@@ -103,15 +110,11 @@ function mySearchFunctionIngredients(ingFiltered) {
   filter = input.value.toLowerCase();
 
   if(ingFiltered.length > 0) {
-    ingFiltered.map(data =>{
-      var test = ingredients.map(ing => {
-        if (ing.search(data) != -1){
+      ingFiltered.map(ing => {
           let listItem = document.createElement('li');
           listItem.classList.add('ingredient')
           listItem.innerHTML = ing;
           listIngredients.appendChild(listItem)
-        }
-      } )
     } )
   } else {
 
@@ -122,6 +125,7 @@ function mySearchFunctionIngredients(ingFiltered) {
       listIngredients.appendChild(listItem)
     }
   } )
+  CreateTag();
   }
 }
 
@@ -133,14 +137,10 @@ function mySearchFunctionAppareils(appFiltered) {
   filter = input.value.toLowerCase();
 
   if(appFiltered.length > 0) {
-    appFiltered.map(data =>{
-      var test = appareils.map(app => {
-        if (app.search(data) != -1){
+    appFiltered.map(app => {
           let listItem = document.createElement('li');
           listItem.innerHTML = app;
           listAppareils.appendChild(listItem)
-        }
-      } )
     } )
   } else {
 
@@ -151,6 +151,7 @@ function mySearchFunctionAppareils(appFiltered) {
       listAppareils.appendChild(listItem)
     }
   } )
+  CreateTag();
 }
 }
 
@@ -162,14 +163,10 @@ function mySearchFunctionUstensils(ustFiltered) {
   filter = input.value.toLowerCase();
 
   if(ustFiltered.length > 0) {
-    ustFiltered.map(data =>{
-      var test = ustensils.map(ust => {
-        if (ust.search(data) != -1){
+    ustFiltered.map(ust => {
           let listItem = document.createElement('li');
           listItem.innerHTML = ust;
           listUstensils.appendChild(listItem)
-        }
-      } )
     } )
   } else {
 
@@ -180,6 +177,7 @@ function mySearchFunctionUstensils(ustFiltered) {
       listUstensils.appendChild(listItem)
     }
   } )
+  CreateTag();
 }
 }
 

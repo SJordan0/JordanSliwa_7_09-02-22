@@ -6,6 +6,7 @@ let recipesSection = document.querySelector(".recipes_section");
 let listIngredients = document.getElementById("listIngredients");
 let listAppareils = document.getElementById("listAppareils");
 let listUstensils = document.getElementById("listUstensils");
+let listTags = document.getElementById('mini-tags')
 let searchBar = document.getElementById("searchBar")
 let searchIngredients = document.getElementById('searchIngredients')
 let searchAppareils = document.getElementById('searchAppareils')
@@ -46,8 +47,6 @@ function getRecipeData(recipes) {
         displayIngredients(recipes[i].ingredients)
         displayAppareils(recipes[i].appliance)
         displayUstensils(recipes[i].ustensils)
-        CreateTag();
-        RemoveTag();
     }
 }
 
@@ -110,14 +109,14 @@ function displayIngredients() {
 
   let Ing = recipe.ingredients;
 
-
    for (let ingredient of Ing) {
 
    if(ingredients.filter(ing => ing == ingredient.ingredient.toLowerCase()).length == 0) {
+    ingredients.push(ingredient.ingredient.toLowerCase())
     let listItem = document.createElement('li');
     listItem.innerHTML = `${ingredient.ingredient}`
+    listItem.classList.add = ('test')
     listIngredients.appendChild(listItem)
-   ingredients.push(ingredient.ingredient.toLowerCase())
    }
    }
  }
@@ -153,6 +152,13 @@ searchIngredients.addEventListener('keyup', mySearchFunctionIngredients)
 searchAppareils.addEventListener('keyup', mySearchFunctionAppareils)
 searchUstensils.addEventListener('keyup', mySearchFunctionUstensils)
 
+searchIngredients.addEventListener('click', () => { CreateTag(); RemoveTag();})
+searchAppareils.addEventListener('click', () => { CreateTag(); RemoveTag();})
+searchUstensils.addEventListener('click', () => { CreateTag(); RemoveTag();})
+
+// listTags.addEventListener('click', RemoveTag)
+
+
 
 let open1 = document.querySelector('.ingredients')
 let close1 = document.querySelector('#iconClose1')
@@ -170,4 +176,4 @@ open3.addEventListener('click', () => openList3())
 close3.addEventListener('click', () => closeList3())
 closeAll.addEventListener('mouseup', () => closeList())
 
-export { getRecipeData, recettes, ingredients, appareils, ustensils }
+export { getRecipeData, recettes, ingredients, appareils, ustensils, displayIngredients }

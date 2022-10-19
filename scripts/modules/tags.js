@@ -15,7 +15,6 @@ function CreateTag() {
         listTag.push(item.innerText)
         space.appendChild(item);
         mySearchFunction(listTag)
-        console.log(listTag)
       }
   })
   })
@@ -30,7 +29,6 @@ function CreateTag() {
         listTag.push(item.innerText)
         space.appendChild(item);
         mySearchFunction(listTag)
-        console.log(listTag)
       }
   })
   })
@@ -45,7 +43,6 @@ function CreateTag() {
         listTag.push(item.innerText)
         space.appendChild(item);
         mySearchFunction(listTag)
-        console.log(listTag)
       }
   })
   })

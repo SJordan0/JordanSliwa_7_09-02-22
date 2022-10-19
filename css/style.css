@@ -24,7 +24,7 @@ body, h1, h2, h3, p, ul, li, button {
 }
 
 .container {
-  max-width: 100%;
+  max-width: 95%;
   padding-left: 100px;
   padding-right: 100px;
 }
@@ -148,6 +148,9 @@ header img {
 .info h2 {
   width: 65%;
 }
+.info h2::first-letter {
+  text-transform: uppercase;
+}
 .info span {
   width: 22%;
 }
@@ -170,6 +173,9 @@ header img {
   flex-direction: column;
   width: 45%;
   padding-left: 10px;
+}
+.recipe_ing li::first-letter {
+  text-transform: uppercase;
 }
 
 .recipe_app {
@@ -221,6 +227,9 @@ header img {
 .list li:hover {
   background-color: black;
 }
+.list li::first-letter {
+  text-transform: uppercase;
+}
 
 .tags_section {
   color: white;
@@ -237,6 +246,7 @@ header img {
   font-size: 22px;
   margin-left: 15px;
   padding: 0;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */
