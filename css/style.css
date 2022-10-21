@@ -181,6 +181,9 @@ header img {
 .recipe_app {
   display: none;
 }
+.recipe_app li::first-letter {
+  text-transform: uppercase;
+}
 
 .recipe_ust {
   display: flex;
@@ -189,6 +192,9 @@ header img {
   padding-left: 10px;
   position: absolute;
   left: -200px;
+}
+.recipe_ust li::first-letter {
+  text-transform: uppercase;
 }
 
 .listContainer {

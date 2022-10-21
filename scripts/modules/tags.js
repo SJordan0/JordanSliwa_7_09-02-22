@@ -1,6 +1,6 @@
 import { mySearchFunction } from "./search.js";
+import { listTag } from "./array.js";
 
-const listTag = [];
 
 function CreateTag() {
   let space = document.getElementById('mini-tags');
@@ -50,15 +50,19 @@ function CreateTag() {
 
 function RemoveTag() {
     let space = document.querySelector('#mini-tags');
-    space.addEventListener('click', () => {
         let span = space.querySelectorAll('span').forEach(e =>{
             e.addEventListener('click', () => {
+              let test = e.innerText;
+              console.log(test)
                 e.remove();
-                listTag.splice(e);
+                let NewList = listTag.filter(elt => elt != test)
+                listTag.length = 0;
+                listTag.push.apply(listTag, NewList)
+                console.log(listTag)
+                console.log(NewList)
                 mySearchFunction(listTag)
             })
         })
-    })
 
 }
 

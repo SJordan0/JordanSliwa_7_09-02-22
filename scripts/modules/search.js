@@ -1,5 +1,25 @@
-import { recettes, ingredients, appareils, ustensils } from "./recipe.js";
-import { CreateTag } from "./tags.js";
+import { recettes, ingredients, appareils, ustensils, recTags } from "./array.js";
+import { recipes } from "../../data/recipes.js";
+import { getRecipeData } from "./display.js";
+
+function initSearch() {
+  let input = document.getElementById("searchBar");
+
+  let filter = input.value.toLowerCase();
+  let recipesSection = document.querySelector("#recipesSection")
+  console.log(filter)
+
+  if(filter.length > 2) {
+    mySearchFunction();
+  } else if (filter.length == 0) {
+    recipesSection.innerHTML='';
+    recettes.splice(0, recettes.length);
+    getRecipeData(recipes);
+    mySearchFunctionIngredients(ingredients)
+    mySearchFunctionAppareils(appareils)
+    mySearchFunctionUstensils(ustensils)
+  }
+}
 
 function mySearchFunction(listTag) {
   let recipesSection = document.querySelector("#recipesSection")
@@ -12,8 +32,8 @@ function mySearchFunction(listTag) {
   let input = document.getElementById("searchBar");
 
   let filter = input.value.toLowerCase();
-
-  if (listTag.length > 0){
+  if (listTag && listTag.length == 1){
+    recTags.length = 0;
     listTag.map(tag =>{
       var test = recettes.map(rec => {
         if (rec.search(tag.toLowerCase()) != -1){
@@ -48,14 +68,62 @@ function mySearchFunction(listTag) {
                 }
             })
             recFiltered.push(e);
+            recTags.push(rec)
+            console.log(recFiltered)
+            console.log(recTags)
           }
         })
         }
       } )
     } )
     
-  } else {
+  } else if (listTag && listTag.length > 1) {
 
+    listTag.slice(-1).map(tag =>{
+      console.log(tag)
+      var test = recTags.map(rec => {
+        if (rec.search(tag.toLowerCase()) != -1){
+          let listItem = document.createElement('article');
+          listItem.innerHTML = rec;
+          recipesSection.appendChild(listItem)
+
+          let recipe = document.querySelector("#recipesSection")
+          let info = recipe.querySelectorAll('.info').forEach(e => {
+            if(recFiltered.filter(elt => elt == e).length == 0) {
+            let liste = e.querySelector('.recipe_ing')
+            let listIng = liste.innerText;
+            const ingred = listIng.split('\n');
+            ingred.map(ing => {
+                let test = ing.split(':');
+                if(ingFiltered.filter(elt => elt == test[0]).length == 0) {
+                  ingFiltered.push(test[0])
+                }
+            })
+            let appareil = e.querySelector('.recipe_app')
+            const app = appareil.innerText;
+            if(appFiltered.filter(elt => elt == app).length == 0) {
+            appFiltered.push(app)
+            }
+            
+            let listUst = e.querySelector('.recipe_ust')
+            const ustensil = listUst.innerText;
+            const usten = ustensil.split('\n');
+            usten.map(ust => {
+              if(ustFiltered.filter(elt => elt == ust).length == 0) {
+                ustFiltered.push(ust)
+                }
+            })
+            recFiltered.push(e);
+            console.log(recFiltered)
+            console.log(recTags)
+            console.log(listTag)
+          }
+        })
+        }
+      } )
+    } )
+
+  } else {
   var test = recettes.map(rec => {
     if (rec.search(filter) != -1){
       let listItem = document.createElement('article');
@@ -89,7 +157,6 @@ function mySearchFunction(listTag) {
         ustFiltered.push(ust)
         }
       })
-      CreateTag();
       recFiltered.push(e);
     }
     })
@@ -125,7 +192,6 @@ function mySearchFunctionIngredients(ingFiltered) {
       listIngredients.appendChild(listItem)
     }
   } )
-  CreateTag();
   }
 }
 
@@ -151,7 +217,6 @@ function mySearchFunctionAppareils(appFiltered) {
       listAppareils.appendChild(listItem)
     }
   } )
-  CreateTag();
 }
 }
 
@@ -177,10 +242,9 @@ function mySearchFunctionUstensils(ustFiltered) {
       listUstensils.appendChild(listItem)
     }
   } )
-  CreateTag();
 }
 }
 
 
 
-export {mySearchFunction, mySearchFunctionIngredients, mySearchFunctionAppareils, mySearchFunctionUstensils}
+export { initSearch ,mySearchFunction, mySearchFunctionIngredients, mySearchFunctionAppareils, mySearchFunctionUstensils}

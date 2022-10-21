@@ -197,6 +197,9 @@ header{
 
 .recipe_app{
     display: none;
+    & li::first-letter{
+        text-transform: uppercase;
+    }
 }
 
 .recipe_ust{
@@ -206,6 +209,9 @@ header{
     padding-left: 10px;
     position: absolute;
     left: -200px;
+    & li::first-letter{
+        text-transform: uppercase;
+    }
 }
 
 .listContainer{

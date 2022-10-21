@@ -1,22 +1,10 @@
-import { openList1, closeList1, openList2, closeList2, openList3, closeList3, closeList } from "./list.js";
-import { mySearchFunction, mySearchFunctionIngredients, mySearchFunctionAppareils, mySearchFunctionUstensils } from './search.js'
-import { CreateTag, RemoveTag } from '../modules/tags.js'
+import { recettes, ingredients, appareils, ustensils } from "./array.js";
 
 let recipesSection = document.querySelector(".recipes_section");
 let listIngredients = document.getElementById("listIngredients");
 let listAppareils = document.getElementById("listAppareils");
 let listUstensils = document.getElementById("listUstensils");
-let listTags = document.getElementById('mini-tags')
-let searchBar = document.getElementById("searchBar")
-let searchIngredients = document.getElementById('searchIngredients')
-let searchAppareils = document.getElementById('searchAppareils')
-let searchUstensils = document.getElementById('searchUstensils')
 let recipe
-
-const recettes = []
-const ingredients = [];
-const appareils = [];
-const ustensils = [];
 
 class Recipe {
     constructor(name, id, servings, ingredients, time, description, appliance, ustensils) {
@@ -146,34 +134,4 @@ function displayUstensils(){
 }
 }
 
-
-searchBar.addEventListener('keyup', mySearchFunction)
-searchIngredients.addEventListener('keyup', mySearchFunctionIngredients)
-searchAppareils.addEventListener('keyup', mySearchFunctionAppareils)
-searchUstensils.addEventListener('keyup', mySearchFunctionUstensils)
-
-searchIngredients.addEventListener('click', () => { CreateTag(); RemoveTag();})
-searchAppareils.addEventListener('click', () => { CreateTag(); RemoveTag();})
-searchUstensils.addEventListener('click', () => { CreateTag(); RemoveTag();})
-
-// listTags.addEventListener('click', RemoveTag)
-
-
-
-let open1 = document.querySelector('.ingredients')
-let close1 = document.querySelector('#iconClose1')
-let open2 = document.querySelector('.appareils')
-let close2 = document.querySelector('#iconClose2')
-let open3 = document.querySelector('.ustensiles')
-let close3 = document.querySelector('#iconClose3')
-let closeAll = document.querySelector('.filters')
-
-open1.addEventListener('click', () => openList1())
-close1.addEventListener('click', () => closeList1())
-open2.addEventListener('click', () => openList2())
-close2.addEventListener('click', () => closeList2())
-open3.addEventListener('click', () => openList3())
-close3.addEventListener('click', () => closeList3())
-closeAll.addEventListener('mouseup', () => closeList())
-
-export { getRecipeData, recettes, ingredients, appareils, ustensils, displayIngredients }
+export { getRecipeData }
