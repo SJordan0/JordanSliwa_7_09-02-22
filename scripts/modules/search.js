@@ -22,7 +22,7 @@ function initSearch() {
 }
 
 function mySearchFunction(listTag) {
-  let recipesSection = document.querySelector("#recipesSection")
+  let recipesSection = document.querySelector("#recipesSection");
   recipesSection.innerHTML='';
   let ingFiltered = [];
   let appFiltered = [];
@@ -39,136 +39,136 @@ function mySearchFunction(listTag) {
         if (rec.search(tag.toLowerCase()) != -1){
           let listItem = document.createElement('article');
           listItem.innerHTML = rec;
-          recipesSection.appendChild(listItem)
+          recipesSection.appendChild(listItem);
 
-          let recipe = document.querySelector("#recipesSection")
+          let recipe = document.querySelector("#recipesSection");
           let info = recipe.querySelectorAll('.info').forEach(e => {
             if(recFiltered.filter(elt => elt == e).length == 0) {
-            let liste = e.querySelector('.recipe_ing')
+            let liste = e.querySelector('.recipe_ing');
             let listIng = liste.innerText;
             const ingred = listIng.split('\n');
             ingred.map(ing => {
                 let item = ing.split(':');
                 if(ingFiltered.filter(elt => elt == item[0]).length == 0) {
-                  ingFiltered.push(item[0])
+                  ingFiltered.push(item[0]);
                 }
-            })
-            let appareil = e.querySelector('.recipe_app')
+            });
+            let appareil = e.querySelector('.recipe_app');
             const app = appareil.innerText;
             if(appFiltered.filter(elt => elt == app).length == 0) {
-            appFiltered.push(app)
+            appFiltered.push(app);
             }
             
-            let listUst = e.querySelector('.recipe_ust')
+            let listUst = e.querySelector('.recipe_ust');
             const ustensil = listUst.innerText;
             const usten = ustensil.split('\n');
             usten.map(ust => {
               if(ustFiltered.filter(elt => elt == ust).length == 0) {
-                ustFiltered.push(ust)
+                ustFiltered.push(ust);
                 }
-            })
+            });
             recFiltered.push(e);
-            recTags.push(rec)
-            console.log(recFiltered)
-            console.log(recTags)
+            recTags.push(rec);
+            console.log(recFiltered);
+            console.log(recTags);
           }
-        })
+        });
         }
-      } )
-    } )
+      } );
+    } );
     
   } else if (listTag && listTag.length > 1) {
 
     listTag.slice(-1).map(tag =>{
-      console.log(tag)
+      console.log(tag);
       recTags.map(rec => {
         if (rec.search(tag.toLowerCase()) != -1){
           let listItem = document.createElement('article');
           listItem.innerHTML = rec;
-          recipesSection.appendChild(listItem)
+          recipesSection.appendChild(listItem);
 
-          let recipe = document.querySelector("#recipesSection")
+          let recipe = document.querySelector("#recipesSection");
           let info = recipe.querySelectorAll('.info').forEach(e => {
             if(recFiltered.filter(elt => elt == e).length == 0) {
-            let liste = e.querySelector('.recipe_ing')
+            let liste = e.querySelector('.recipe_ing');
             let listIng = liste.innerText;
             const ingred = listIng.split('\n');
             ingred.map(ing => {
                 let item = ing.split(':');
                 if(ingFiltered.filter(elt => elt == item[0]).length == 0) {
-                  ingFiltered.push(item[0])
+                  ingFiltered.push(item[0]);
                 }
-            })
-            let appareil = e.querySelector('.recipe_app')
+            });
+            let appareil = e.querySelector('.recipe_app');
             const app = appareil.innerText;
             if(appFiltered.filter(elt => elt == app).length == 0) {
-            appFiltered.push(app)
+            appFiltered.push(app);
             }
             
-            let listUst = e.querySelector('.recipe_ust')
+            let listUst = e.querySelector('.recipe_ust');
             const ustensil = listUst.innerText;
             const usten = ustensil.split('\n');
             usten.map(ust => {
               if(ustFiltered.filter(elt => elt == ust).length == 0) {
-                ustFiltered.push(ust)
+                ustFiltered.push(ust);
                 }
-            })
+            });
             recFiltered.push(e);
-            console.log(recFiltered)
-            console.log(recTags)
-            console.log(listTag)
+            console.log(recFiltered);
+            console.log(recTags);
+            console.log(listTag);
           }
-        })
+        });
         }
-      } )
-    } )
+      } );
+    } );
 
   } else {
   recettes.map(rec => {
     if (rec.search(filter) != -1){
       let listItem = document.createElement('article');
       listItem.innerHTML = rec;
-      recipesSection.appendChild(listItem)
+      recipesSection.appendChild(listItem);
 
-      let recipe = document.querySelector("#recipesSection")
+      let recipe = document.querySelector("#recipesSection");
       let info = recipe.querySelectorAll('.info').forEach(e => {
         if(recFiltered.filter(elt => elt == e).length == 0) {
-        let liste = e.querySelector('.recipe_ing')
+        let liste = e.querySelector('.recipe_ing');
         let listIng = liste.innerText;
         const ingred = listIng.split('\n');
         ingred.map(ing => {
           let item = ing.split(':');
           if(ingFiltered.filter(elt => elt == item[0]).length == 0) {
-            ingFiltered.push(item[0])
+            ingFiltered.push(item[0]);
           }
-      })
+      });
 
-      let appareil = e.querySelector('.recipe_app')
+      let appareil = e.querySelector('.recipe_app');
       const app = appareil.innerText;
       if(appFiltered.filter(elt => elt == app).length == 0) {
-        appFiltered.push(app)
+        appFiltered.push(app);
         }
 
-      let listUst = e.querySelector('.recipe_ust')
+      let listUst = e.querySelector('.recipe_ust');
       const ustensil = listUst.innerText;
       const usten = ustensil.split('\n');
       usten.map(ust => {
         if(ustFiltered.filter(elt => elt == ust).length == 0) {
-        ustFiltered.push(ust)
+        ustFiltered.push(ust);
         }
-      })
+      });
       recFiltered.push(e);
     }
-    })
+    });
     }
-  } )
+  } );
   if(recipesSection.childNodes.length === 0) {
-    recipesSection.innerHTML = '<h2>Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson »</h2>'
+    recipesSection.innerHTML = '<h2>Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson »</h2>';
   }
 }
-  mySearchFunctionIngredients(ingFiltered)
-  mySearchFunctionAppareils(appFiltered)
-  mySearchFunctionUstensils(ustFiltered)
+  mySearchFunctionIngredients(ingFiltered);
+  mySearchFunctionAppareils(appFiltered);
+  mySearchFunctionUstensils(ustFiltered);
 }
 
 
