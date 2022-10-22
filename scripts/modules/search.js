@@ -30,12 +30,12 @@ function mySearchFunction(listTag) {
   let recFiltered = [];
  
   let input = document.getElementById("searchBar");
-
   let filter = input.value.toLowerCase();
+  
   if (listTag && listTag.length == 1){
     recTags.length = 0;
     listTag.map(tag =>{
-      var test = recettes.map(rec => {
+      recettes.map(rec => {
         if (rec.search(tag.toLowerCase()) != -1){
           let listItem = document.createElement('article');
           listItem.innerHTML = rec;
@@ -48,9 +48,9 @@ function mySearchFunction(listTag) {
             let listIng = liste.innerText;
             const ingred = listIng.split('\n');
             ingred.map(ing => {
-                let test = ing.split(':');
-                if(ingFiltered.filter(elt => elt == test[0]).length == 0) {
-                  ingFiltered.push(test[0])
+                let item = ing.split(':');
+                if(ingFiltered.filter(elt => elt == item[0]).length == 0) {
+                  ingFiltered.push(item[0])
                 }
             })
             let appareil = e.querySelector('.recipe_app')
@@ -81,7 +81,7 @@ function mySearchFunction(listTag) {
 
     listTag.slice(-1).map(tag =>{
       console.log(tag)
-      var test = recTags.map(rec => {
+      recTags.map(rec => {
         if (rec.search(tag.toLowerCase()) != -1){
           let listItem = document.createElement('article');
           listItem.innerHTML = rec;
@@ -94,9 +94,9 @@ function mySearchFunction(listTag) {
             let listIng = liste.innerText;
             const ingred = listIng.split('\n');
             ingred.map(ing => {
-                let test = ing.split(':');
-                if(ingFiltered.filter(elt => elt == test[0]).length == 0) {
-                  ingFiltered.push(test[0])
+                let item = ing.split(':');
+                if(ingFiltered.filter(elt => elt == item[0]).length == 0) {
+                  ingFiltered.push(item[0])
                 }
             })
             let appareil = e.querySelector('.recipe_app')
@@ -124,7 +124,7 @@ function mySearchFunction(listTag) {
     } )
 
   } else {
-  var test = recettes.map(rec => {
+  recettes.map(rec => {
     if (rec.search(filter) != -1){
       let listItem = document.createElement('article');
       listItem.innerHTML = rec;
@@ -137,9 +137,9 @@ function mySearchFunction(listTag) {
         let listIng = liste.innerText;
         const ingred = listIng.split('\n');
         ingred.map(ing => {
-          let test = ing.split(':');
-          if(ingFiltered.filter(elt => elt == test[0]).length == 0) {
-            ingFiltered.push(test[0])
+          let item = ing.split(':');
+          if(ingFiltered.filter(elt => elt == item[0]).length == 0) {
+            ingFiltered.push(item[0])
           }
       })
 
@@ -162,6 +162,9 @@ function mySearchFunction(listTag) {
     })
     }
   } )
+  if(recipesSection.childNodes.length === 0) {
+    recipesSection.innerHTML = '<h2>Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson »</h2>'
+  }
 }
   mySearchFunctionIngredients(ingFiltered)
   mySearchFunctionAppareils(appFiltered)
@@ -185,7 +188,7 @@ function mySearchFunctionIngredients(ingFiltered) {
     } )
   } else {
 
-  var test = ingredients.map(ing => {
+  ingredients.map(ing => {
     if (ing.search(filter) != -1){
       let listItem = document.createElement('li');
       listItem.innerHTML = ing;
@@ -210,7 +213,7 @@ function mySearchFunctionAppareils(appFiltered) {
     } )
   } else {
 
-  var test = appareils.map(app => {
+  appareils.map(app => {
     if (app.search(filter) != -1){
       let listItem = document.createElement('li');
       listItem.innerHTML = app;
@@ -235,7 +238,7 @@ function mySearchFunctionUstensils(ustFiltered) {
     } )
   } else {
 
-  var test = ustensils.map(ust => {
+  ustensils.map(ust => {
     if (ust.search(filter) != -1){
       let listItem = document.createElement('li');
       listItem.innerHTML = ust;
